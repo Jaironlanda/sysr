@@ -1,9 +1,9 @@
 <?php
-    $title = "Index";
+    $page_title = "Index";
     include './layout/header.php';
 ?>
     
-    <h1>Hello, world!</h1>
+    <h1>This is Index</h1>
 
     
 <?php
