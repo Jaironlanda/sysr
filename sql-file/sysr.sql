@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 26, 2021 at 04:36 AM
+-- Generation Time: Nov 26, 2021 at 04:44 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -44,6 +44,7 @@ CREATE TABLE `feedback` (
 
 CREATE TABLE `report` (
   `id` int(11) NOT NULL,
+  `title` text NOT NULL,
   `content` longtext NOT NULL,
   `report_type_id` int(11) NOT NULL,
   `reporter_id` int(11) NOT NULL,
