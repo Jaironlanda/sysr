@@ -30,9 +30,4 @@ if ($login->num_rows == 1){
    $_SESSION['message_error'] = "Invalid email or password.";
    header('location: login.php');
 }
-
-function check_hash($string)
-{
-    # code...
-}
 ?>
