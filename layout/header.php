@@ -1,7 +1,7 @@
 <?php
+    session_start();
     require './helper/url.php';
     require './db-config/db.php';
-    session_start();
     $url = new url();
     define('CSS_PATH', $url->base_url().'assets/css/');
     define('JS_PATH', $url->base_url().'assets/js/');
@@ -43,6 +43,26 @@
             </div>
         </div>
     </nav>
+    <!-- Alert -->
+        <div class="container">
+            <div class="row">
+            <div class="col-md-12 mx-auto mt-5">
+                <?php if(isset($_SESSION['message_noti'])): ?>
+                    <div class="alert alert-success">
+                        <?php echo $_SESSION['message_noti']; ?>
+                    </div>
+                <?php endif; ?>
+                <?php if(isset($_SESSION['message_error'])): ?>
+                    <div class="alert alert-danger">
+                        <?php echo $_SESSION['message_error']; ?>
+                    </div>
+                <?php endif; ?>
+                <?php unset($_SESSION['message_noti']); ?>
+                <?php unset($_SESSION['message_error']); ?>
+            </div>
+            </div>
+        </div>
+    <!-- Alert -->
     <div class="container">
 
     
