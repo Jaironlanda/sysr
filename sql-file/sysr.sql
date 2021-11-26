@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 26, 2021 at 03:38 AM
+-- Generation Time: Nov 26, 2021 at 04:36 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -64,13 +64,6 @@ CREATE TABLE `reportType` (
   `datetime_updated` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `reportType`
---
-
-INSERT INTO `reportType` (`id`, `name`, `datetime_created`, `datetime_updated`) VALUES
-(1, 'Data Breach', '2021-11-25 13:10:21', '2021-11-25 20:10:59');
-
 -- --------------------------------------------------------
 
 --
@@ -80,10 +73,9 @@ INSERT INTO `reportType` (`id`, `name`, `datetime_created`, `datetime_updated`) 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `user_lvl` int(11) NOT NULL DEFAULT 1,
-  `username` varchar(265) NOT NULL,
   `email` varchar(265) NOT NULL,
-  `pswd` varchar(265) NOT NULL,
   `fullname` text NOT NULL,
+  `pswd` varchar(265) NOT NULL,
   `datetime_created` datetime NOT NULL,
   `datetime_updated` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -136,7 +128,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `reportType`
 --
 ALTER TABLE `reportType`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
