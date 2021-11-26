@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 25, 2021 at 03:41 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- Host: 127.0.0.1
+-- Generation Time: Nov 25, 2021 at 05:12 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `sysr`
 --
+CREATE DATABASE IF NOT EXISTS `sysr` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `sysr`;
 
 -- --------------------------------------------------------
 
@@ -54,10 +56,10 @@ CREATE TABLE `report` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reportType`
+-- Table structure for table `reporttype`
 --
 
-CREATE TABLE `reportType` (
+CREATE TABLE `reporttype` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `datetime_created` datetime NOT NULL,
@@ -65,10 +67,10 @@ CREATE TABLE `reportType` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `reportType`
+-- Dumping data for table `reporttype`
 --
 
-INSERT INTO `reportType` (`id`, `name`, `datetime_created`, `datetime_updated`) VALUES
+INSERT INTO `reporttype` (`id`, `name`, `datetime_created`, `datetime_updated`) VALUES
 (1, 'Data Breach', '2021-11-25 13:10:21', '2021-11-25 20:10:59');
 
 -- --------------------------------------------------------
@@ -96,18 +98,21 @@ CREATE TABLE `user` (
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `admin_id` (`admin_id`);
 
 --
 -- Indexes for table `report`
 --
 ALTER TABLE `report`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `report_type_id` (`report_type_id`),
+  ADD KEY `reporter_id` (`reporter_id`);
 
 --
--- Indexes for table `reportType`
+-- Indexes for table `reporttype`
 --
-ALTER TABLE `reportType`
+ALTER TABLE `reporttype`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -133,9 +138,9 @@ ALTER TABLE `report`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `reportType`
+-- AUTO_INCREMENT for table `reporttype`
 --
-ALTER TABLE `reportType`
+ALTER TABLE `reporttype`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -143,6 +148,23 @@ ALTER TABLE `reportType`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `report`
+--
+ALTER TABLE `report`
+  ADD CONSTRAINT `report_ibfk_1` FOREIGN KEY (`report_type_id`) REFERENCES `reporttype` (`id`),
+  ADD CONSTRAINT `report_ibfk_2` FOREIGN KEY (`reporter_id`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
