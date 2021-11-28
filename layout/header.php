@@ -26,6 +26,18 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<?php if (isset($_SESSION['is_logged'])): ?>
+					<li class="nav-item">
+						<div class="dropdown">
+							<button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+							<?php echo $_SESSION['is_logged']['fullname']; ?>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="<?php echo $url->base_url().'logout.php'; ?>">Logout</a>
+							</div>
+						</div>
+					</li>
+					<?php else: ?>
                     <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li> -->
                     <li class="nav-item"><a class="nav-link" href="<?php echo $url->base_url().'login.php'; ?>">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo $url->base_url().'register.php'; ?>">Register</a></li>
@@ -39,6 +51,7 @@
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li> -->
+					<?php endif; ?>
                 </ul>
             </div>
         </div>
