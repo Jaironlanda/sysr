@@ -6,6 +6,10 @@
         $_SESSION['message_error'] = "Access denied, please login.";
         header('location: login.php');
     }
+
+    // query submited user report
+    $req_report = "SELECT * FROM report WHERE reporter_id= '". $_SESSION['is_logged']['id']."'";
+    $list_report = $conn->query($req_report);
 ?>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -26,28 +30,26 @@
             <th>id</th>
             <th>Topic</th>
             <th>Date Created</th>
-            <th>Status</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
+        <?php
+            while ($row = $list_report->fetch_assoc()) {
+        ?>
         <tr>
-            <td>1</td>
-            <td>Data Leak</td>
-            <td>22/2/2022</td>
-            <td>Pending</td>
+            <td><?php echo $row['id']?></td>
+            <td><?php echo htmlspecialchars($row['title']);?></td>
+            <td><?php echo date("d-m-Y", strtotime($row['datetime_created']))?></td>
+            
+            <td>
+                <a class="btn btn-primary" href="viewreport.php?id=<?php echo $row['id']?>" role="button">Detail</a>
+                
+            </td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Data Abuse</td>
-            <td>22/2/2022</td>
-            <td>Pending</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Use Data without permission</td>
-            <td>22/2/2022</td>
-            <td>Pending</td>
-        </tr>
+        <?php
+            }
+        ?>
     </tbody>
 </table>
 

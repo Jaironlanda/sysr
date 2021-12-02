@@ -22,11 +22,11 @@
     <li class="breadcrumb-item active" aria-current="page">Submit Complaint</li>
   </ol>
 </nav>
-<div class="col-md-6 offset-md-3">
+<div class="col-md-6 offset-md-3 mb-5">
     <div class="card">
         <div class="card-body">
             <h5 class="card-title"><?php echo $page_title; ?></h5>
-            <form action="report_action.php" methid="post">
+            <form action="report_action.php" method="post">
                 <div class="mb-3">
                 <label for="" class="form-label">Complaint Type</label>
                 <select class="form-select" name="report_type_id" required>
