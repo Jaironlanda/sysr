@@ -8,7 +8,7 @@
     }
 
     //prepare report type
-    $report_type_sql = "SELECT type_id name FROM reportType";
+    $report_type_sql = "SELECT type_id, name FROM reportType";
     $report_type = $conn->query($report_type_sql);
 
     // var_dump($report_type->num_rows);
