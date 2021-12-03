@@ -1,5 +1,5 @@
 <?php
-    $page_title = "Report form";
+    $page_title = "Submit Complaint";
     include './layout/header.php';
 
     if(!isset($_SESSION['is_logged'])){
@@ -8,7 +8,7 @@
     }
 
     //prepare report type
-    $report_type_sql = "SELECT id, name FROM reportType";
+    $report_type_sql = "SELECT type_id name FROM reportType";
     $report_type = $conn->query($report_type_sql);
 
     // var_dump($report_type->num_rows);
@@ -22,10 +22,11 @@
     <li class="breadcrumb-item active" aria-current="page">Submit Complaint</li>
   </ol>
 </nav>
+<h1><?php echo $page_title?></h1>
+<hr>  
 <div class="col-md-6 offset-md-3 mb-5">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title"><?php echo $page_title; ?></h5>
             <form action="report_action.php" method="post">
                 <div class="mb-3">
                 <label for="" class="form-label">Complaint Type</label>
@@ -34,7 +35,7 @@
                     <?php
                         while ($row = $report_type->fetch_assoc()) {
                     ?>
-                        <option value="<?php echo $row['id']?>"><?php echo $row['name']?></option>
+                        <option value="<?php echo $row['type_id']?>"><?php echo $row['name']?></option>
                     <?php
                         }
                     ?>
@@ -50,7 +51,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="InputUsername" class="form-label">Report By</label>
-                    <input type="hidden" name="reporter_id" value="<?php echo $_SESSION['is_logged']['id'];?>">
+                    <input type="hidden" name="reporter_id" value="<?php echo $_SESSION['is_logged']['user_id'];?>">
                     <input type="text" class="form-control" name="fullname" value="<?php echo $_SESSION['is_logged']['fullname'];?>" disabled>
                 </div>
                 <a class="btn btn-secondary" href="<?php echo $url->base_url().'dashboard.php'; ?>" role="button">Cancel</a>

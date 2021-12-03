@@ -10,7 +10,7 @@ $login_user = array(
 );
 
 $user_input = filter_input_array(INPUT_POST, $login_user);
-$login_sql = "SELECT id, fullname, email, pswd FROM user WHERE email='".$user_input['email']."'";
+$login_sql = "SELECT user_id, user_lvl, fullname, email, pswd FROM user WHERE email='".$user_input['email']."'";
 $login = $conn->query($login_sql);
 
 if ($login->num_rows == 1){
@@ -18,10 +18,11 @@ if ($login->num_rows == 1){
     if(password_verify($_POST['pswd'], $row['pswd'])){
         // set session
         $email = $row['email'];
-        $id = $row['id'];
+        $user_id = $row['user_id'];
         $fullname = $row['fullname'];
+        $user_lvl = $row['user_lvl'];
         
-        $_SESSION['is_logged'] = ['email' => $email, 'id' => $id, 'fullname' => $fullname];
+        $_SESSION['is_logged'] = ['email' => $email, 'user_id' => $user_id, 'fullname' => $fullname, 'user_lvl' => $user_lvl];
         $_SESSION['message_noti'] = "Welcome";
         header('location: dashboard.php');
     }
