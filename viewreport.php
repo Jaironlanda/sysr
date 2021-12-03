@@ -54,11 +54,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="content" class="form-label">Content</label>
-                    <textarea class="form-control" name="content" id="" rows="4" disabled><?php echo $row_viewreport['content']?></textarea>
+                    <textarea class="form-control" name="content" id="" rows="4" disabled><?php echo htmlspecialchars($row_viewreport['content'])?></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="InputUsername" class="form-label">Date Time created</label>
-                    <input type="text" class="form-control" name="fullname" value="<?php echo $row_viewreport['datetime_created']?>" disabled>
+                    <input type="text" class="form-control" name="fullname" value="<?php echo date("d-m-Y H:i A", strtotime($row_viewreport['datetime_created']))?>" disabled>
                 </div>
                 <div class="mb-3">
                     <label for="InputUsername" class="form-label">Report By</label>

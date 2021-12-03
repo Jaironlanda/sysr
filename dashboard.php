@@ -8,8 +8,13 @@
     }
 
     // query submited user report
-    $req_report = "SELECT * FROM report WHERE reporter_id= '". $_SESSION['is_logged']['id']."'";
+    $req_report = "SELECT * FROM report WHERE reporter_id= '". $_SESSION['is_logged']['id']."' ORDER BY datetime_created ASC";
     $list_report = $conn->query($req_report);
+
+    if(!$list_report){
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        exit;
+    }
 ?>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -40,7 +45,7 @@
         <tr>
             <td><?php echo $row['id']?></td>
             <td><?php echo htmlspecialchars($row['title']);?></td>
-            <td><?php echo date("d-m-Y", strtotime($row['datetime_created']))?></td>
+            <td><?php echo date("d-m-Y H:i A", strtotime($row['datetime_created']))?></td>
             
             <td>
                 <a class="btn btn-primary" href="viewreport.php?id=<?php echo $row['id']?>" role="button">Detail</a>
