@@ -19,7 +19,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?php echo $url->base_url().'dashboard.php'; ?>">Dashboard</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Submit Complaint</li>
+    <li class="breadcrumb-item active" aria-current="page"><?php echo $page_title; ?></li>
   </ol>
 </nav>
 <h1><?php echo $page_title?></h1>

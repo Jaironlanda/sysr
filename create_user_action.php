@@ -20,10 +20,10 @@ if($_POST['pswd'] === $_POST['confirmPswd']){
 
     if($userCheck->num_rows >= 1){
         $_SESSION['message_error'] = $user_input['email'] . " is already exist!";        
-        header("location: register.php");
+        header("location: create_user.php");
     }else{
-        $sql = "INSERT INTO user (fullname, email, pswd, datetime_created) 
-        VALUES ('" .$user_input['fullname']. "', '" .$user_input['email']. "', '" .$newHash->pswd_hash($_POST['pswd']). "', '".$datetime."')";
+        $sql = "INSERT INTO user (user_lvl, fullname, email, pswd, datetime_created) 
+        VALUES ('" .$_POST['user_lvl']. "','" .$user_input['fullname']. "', '" .$user_input['email']. "', '" .$newHash->pswd_hash($_POST['pswd']). "', '".$datetime."')";
     
         $register = $conn->query($sql);
     
@@ -31,12 +31,12 @@ if($_POST['pswd'] === $_POST['confirmPswd']){
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
 
-        $_SESSION['message_noti'] = "Success Register";
-        header("location: login.php");
+        $_SESSION['message_noti'] = "Success Create new user";
+        header("location: create_user.php");
     }
 }else{
     $_SESSION['message_error'] = "Password not match";
-    header("location: register.php");
+    header("location: create_user.php");
 }
 
 

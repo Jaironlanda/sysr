@@ -1,5 +1,5 @@
 <?php
-class url{
+class Url{
     
     /**
      * Retrive base url a.k.a domain name

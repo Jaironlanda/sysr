@@ -25,6 +25,9 @@ if ($login->num_rows == 1){
         $_SESSION['is_logged'] = ['email' => $email, 'user_id' => $user_id, 'fullname' => $fullname, 'user_lvl' => $user_lvl];
         $_SESSION['message_noti'] = "Welcome";
         header('location: dashboard.php');
+    }else {
+        $_SESSION['message_error'] = "Invalid email or password.";
+        header('location: login.php');
     }
     
 }else{

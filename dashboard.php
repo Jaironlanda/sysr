@@ -53,7 +53,7 @@
       <div class="card-body">
         <h5 class="card-title">Registered User(s)</h5>
         <p class="card-text"><?php echo $list_user->num_rows?></p>
-        <a href="#" class="btn btn-primary">Manage</a>
+        <a href="<?php echo $url->base_url()?>userlist.php" class="btn btn-primary">Manage</a>
       </div>
     </div>
   </div>
@@ -84,7 +84,7 @@
             <td><?php echo date("d-m-Y H:i A", strtotime($row['datetime_created']))?></td>
             
             <td>
-                <a class="btn btn-primary" href="viewreport.php?id=<?php echo $row['report_id']?>" role="button">Detail</a>
+                <a class="btn btn-primary" href="<?php echo $url->base_url()?>viewreport.php?id=<?php echo $row['report_id']?>" role="button">Detail</a>
                 
             </td>
         </tr>

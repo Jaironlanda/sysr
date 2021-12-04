@@ -2,7 +2,8 @@
     session_start();
     require './helper/url.php';
     require './db-config/db.php';
-    $url = new url();
+    $url = new Url();
+    
     define('CSS_PATH', $url->base_url().'assets/css/');
     define('JS_PATH', $url->base_url().'assets/js/');
 ?>
@@ -36,7 +37,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $_SESSION['is_logged']['fullname']?></a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="<?php echo $url->base_url()."profile.php" ?>">Profile</a></li>
                             <li><hr class="dropdown-divider" /></li>
                             <li><a class="dropdown-item" href=<?php echo $url->base_url()."logout.php" ?>>Logout</a></li>
                         </ul>

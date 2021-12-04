@@ -1,0 +1,1 @@
+                <a class="btn btn-danger" onclick="return confirm('Are you sure delete this user?')" href="<?php echo $url->base_url()?>delete_user.php?user_id=<?php echo $row['user_id']?>" role="button">Delete</a>

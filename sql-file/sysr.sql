@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2021 at 06:32 PM
+-- Generation Time: Dec 04, 2021 at 08:02 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -36,15 +36,6 @@ CREATE TABLE `feedback` (
   `datetime_updated` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `feedback`
---
-
-INSERT INTO `feedback` (`feedback_id`, `content`, `report_id`, `admin_id`, `datetime_created`, `datetime_updated`) VALUES
-(1, 'this is feedback for report id 1', 1, 1, '2021-12-03 16:16:34', '2021-12-03 23:16:34'),
-(2, 'this is feedback for report id 1', 1, 1, '2021-12-03 16:16:52', '2021-12-03 23:16:52'),
-(3, 'This my 2nd respond', 1, 1, '2021-12-03 17:12:07', '2021-12-04 00:12:07');
-
 -- --------------------------------------------------------
 
 --
@@ -60,13 +51,6 @@ CREATE TABLE `report` (
   `datetime_created` datetime NOT NULL,
   `datetime_updated` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `report`
---
-
-INSERT INTO `report` (`report_id`, `title`, `content`, `report_type_id`, `reporter_id`, `datetime_created`, `datetime_updated`) VALUES
-(1, 'Threats', 'This is my complain regarding application that offer me to claim free money. ', 2, 2, '2021-12-03 14:35:30', '2021-12-03 21:35:30');
 
 -- --------------------------------------------------------
 
@@ -122,8 +106,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_lvl`, `email`, `fullname`, `pswd`, `datetime_created`, `datetime_updated`) VALUES
-(1, 2, 'admin@sysr.com', 'Administrator', '$2y$10$KHR5RBbOAmh6ZcOh4hstJu5qLEK0TbypyaeTVrq8Ta4QpawSQiNpy', '2021-12-03 14:32:23', '2021-12-03 21:32:23'),
-(2, 1, 'jaironlanda@gmail.com', 'Jairon Landa', '$2y$10$EGc2bTpOL1xzUXbSHTHCau6Wt7dLUeo9NXsWtcFpfKA.7O3jlIS6.', '2021-12-03 14:34:31', '2021-12-03 21:34:31');
+(1, 2, 'admin@sysr.com', 'Administrator', '$2y$10$HpZwydPg9NRki3tp7Q/v7.wJwL/4wjEu/4FG3fgJ6Fea0d0oBFPQG', '2021-12-04 08:00:39', '2021-12-04 15:00:40'),
+(2, 1, 'jaironlanda@gmail.com', 'Jairon Landa', '$2y$10$A5XuRL8D2ehId9nq5HlHOecBhdpci8a9HlxJkChyWcNKqZO.En98u', '2021-12-04 08:01:09', '2021-12-04 15:01:09'),
+(3, 1, 'jaypark@gmail.com', 'Jaypark', '$2y$10$BbrXlerdqXsxOm.fuFGRverI9jBZbFi6YbHYQXctkNelC//yaGnnq', '2021-12-04 08:01:42', '2021-12-04 15:01:42'),
+(4, 1, 'nizamjitai@gmail.com', 'Nizam Jitai', '$2y$10$IJBRsBgQ2.Q8HNu0uNDcGO24BHNX9KcnfwPnZCnFJUNdrf/.JZhPW', '2021-12-04 08:02:08', '2021-12-04 15:02:08');
 
 --
 -- Indexes for dumped tables
@@ -161,13 +147,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `reportType`
@@ -179,7 +165,7 @@ ALTER TABLE `reportType`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
